@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#f5eee7" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="description" content="Un piccolo universo romantico e un po’ assurdo, tutto per Giuly. Un’avventura 3D da vivere insieme." />
+    <title>GIULY · Fuori dal mondo</title>
+  </head>
+  <body>
+    <canvas id="world" aria-label="Il mondo tridimensionale di Giuly"></canvas>
+    <div class="scene-vignette" aria-hidden="true"></div>
+
+    <section id="intro" class="intro" aria-labelledby="intro-title">
+      <div class="intro-shell">
+        <header class="intro-header">
+          <a class="wordmark" href="#" aria-label="Giuly, Fuori dal mondo">
+            <span class="wordmark-symbol" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none"><path d="M16 26S5 19.8 5 11.9a6.1 6.1 0 0 1 11-3.6 6.1 6.1 0 0 1 11 3.6C27 19.8 16 26 16 26Z" stroke="currentColor" stroke-width="1.4"/><path d="m23 3 1 2.5L26.5 7 24 8l-1 2.5L22 8l-2.5-1L22 5.5 23 3Z" fill="currentColor"/></svg></span>
+            <span>GIULY<span class="wordmark-sub">FUORI DAL MONDO</span></span>
+          </a>
+          <span class="intro-edition">UN MONDO POSSIBILE — 01</span>
+          <span class="love-tag"><span class="small-heart" aria-hidden="true">♡</span> FATTO CON AMORE</span>
+        </header>
+
+        <main class="intro-content">
+          <div class="intro-copy">
+            <p class="eyebrow"><span aria-hidden="true"></span>UN PICCOLO UNIVERSO, SOLO PER TE</p>
+            <h1 id="intro-title">Giuly, ti porto<br /><em>fuori dal mondo.</em></h1>
+            <p class="intro-description">La luna ha perso il senno. Un gatto gigante pretende complimenti. E il nostro appuntamento è ancora tutto da inventare.</p>
+            <div class="intro-actions">
+              <button id="start-button" disabled class="button button-primary start-button" type="button"><span>Entriamo in questo sogno</span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+              <span class="journey-note">POCHI MINUTI. INFINITI POSSIBILI.</span>
+            </div>
+            <details class="intro-personalize">
+              <summary id="intro-settings"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m13.5 3.5 3 3M4 16l.8-3.8L13 4a2.1 2.1 0 0 1 3 3l-8.2 8.2L4 16Z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg><span>Una dedica, a modo tuo</span><span class="details-plus" aria-hidden="true">+</span></summary>
+              <div class="personalize-fields">
+                <label for="intro-name">Il suo nome<input id="intro-name" type="text" value="Giuly" maxlength="32" autocomplete="off" /></label>
+                <label for="intro-dedication">Le tue parole<textarea id="intro-dedication" rows="2" maxlength="280">Sei il mio posto preferito, anche quando il mondo impazzisce.</textarea></label>
+              </div>
+            </details>
+          </div>
+          <div class="world-caption" aria-hidden="true"><span class="caption-star">✦</span><span>LA REALTÀ PUÒ ASPETTARE.<br /><strong>Questo momento è nostro.</strong></span></div>
+        </main>
+
+        <footer class="intro-footer"><span>Un’avventura breve. <em>Un sentimento enorme.</em></span><span class="experience-meta"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 11V8a6 6 0 0 1 12 0v3M4 10H3v6h3v-6H4Zm12 0h1v6h-3v-6h2Z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg>3D · CUFFIE CONSIGLIATE</span></footer>
+      </div>
+    </section>
+
+    <div id="loading" class="loading" role="status"><span class="loading-star" aria-hidden="true">✦</span><span id="loading-label">Sto accendendo le stelle…</span><span class="loading-track" aria-hidden="true"><span></span></span></div>
+
+    <div id="hud" class="hud" hidden>
+      <header class="hud-header">
+        <div class="hud-brand"><span id="brand-name">GIULY</span><span>FUORI DAL MONDO</span></div>
+        <div class="mission"><span class="mission-label">IL NOSTRO APPUNTAMENTO</span><h2 id="quest-title">Segui la meraviglia</h2><p id="quest-subtitle">Ogni incontro nasconde una piccola sorpresa.</p><span id="navigation-hint" class="navigation-hint"></span></div>
+        <div class="hud-actions"><button id="audio-button" class="icon-button" type="button" title="Attiva o disattiva l’audio" aria-label="Attiva o disattiva l’audio"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4Zm12-1a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span id="sound-label" class="sr-only">Audio</span></button><button id="pause-button" class="icon-button" type="button" title="Pausa" aria-label="Metti in pausa"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 5v14M15 5v14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></div>
+      </header>
+      <aside class="quest-panel" aria-label="I tuoi piccoli obiettivi"><div class="quest-panel-heading"><span>RICORDI DA COLLEZIONARE</span><span id="progress-label">0 / 4</span></div><div class="progress-track"><span id="progress-bar"></span></div><ol id="quest-list" class="quest-list"></ol><span id="star-counter" class="star-counter">✦ 0 / 5 stelle segrete</span></aside>
+      <div id="crosshair" class="crosshair" aria-hidden="true"></div>
+      <div id="interaction" class="interaction" hidden><span class="interaction-spark" aria-hidden="true">✦</span><span id="interaction-label">Qualcuno ha una storia per te.</span><button id="interact-button" type="button"><kbd>E</kbd><span>Interagisci</span></button></div>
+      <div class="controls-corner"><p id="controls-hint"><kbd>WASD</kbd> muovi<span>·</span>mouse guarda<span>·</span><kbd>E</kbd> interagisci</p><button id="help-button" type="button">Come si gioca <svg class="inline-arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+    </div>
+
+    <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
+    <section id="pause-overlay" class="overlay pause-overlay" role="dialog" aria-modal="true" aria-labelledby="pause-title" hidden>
+      <div class="pause-card">
+        <button id="close-help-button" class="close-button" type="button" aria-label="Chiudi e torna al gioco">×</button>
+        <p class="eyebrow">IL MONDO PUÒ ASPETTARE</p><h2 id="pause-title">Un piccolo respiro.</h2><p class="card-description">Il sogno è ancora qui. Ripartiamo quando vuoi.</p>
+        <div class="how-to"><div><kbd>W A S D</kbd><span>Passeggia nel mondo</span></div><div><span class="control-symbol">↔</span><span>Muovi il mouse per guardarti intorno</span></div><div><kbd>E</kbd><span>Parla, scopri, lasciati sorprendere</span></div><div><kbd>SPAZIO</kbd><span>Un piccolo salto verso le stelle</span></div></div>
+        <p class="mobile-how-to">Usa il joystick per muoverti, trascina lo schermo per guardarti intorno e tocca <strong>Interagisci</strong> quando incontri qualcuno.</p>
+        <button id="pause-audio-button" class="text-button pause-audio" type="button">♫ Musica attiva · disattiva</button><details class="pause-settings"><summary>Il nome e la dedica <span aria-hidden="true">+</span></summary><div class="personalize-fields"><label for="name-input">Il suo nome<input id="name-input" type="text" value="Giuly" maxlength="32" autocomplete="off" /></label><label for="dedication-input">La dedica finale<textarea id="dedication-input" rows="3" maxlength="280">Sei il mio posto preferito, anche quando il mondo impazzisce.</textarea></label><button id="save-settings-button" class="button button-secondary" type="button">Salva le tue parole</button></div></details>
+        <button id="resume-button" class="button button-primary full-width" type="button">Torniamo nel sogno <svg class="inline-arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><button id="restart-button" class="text-button" type="button">Ricomincia l’avventura</button>
+      </div>
+    </section>
+
+    <section id="dialog-overlay" class="overlay dialog-overlay" role="dialog" aria-modal="true" aria-labelledby="dialog-title" hidden><div class="dialog-card"><button id="dialog-close" class="close-button" type="button" aria-label="Chiudi il dialogo">×</button><p id="dialog-subtitle" class="eyebrow">UN INCONTRO IMPOSSIBILE</p><h2 id="dialog-title">Il mondo ha qualcosa da dirti.</h2><div id="dialog-body" class="dialog-body"></div><div id="dialog-actions" class="dialog-actions"></div><span class="dialog-flower" aria-hidden="true">✳</span></div></section>
+
+    <section id="finale-overlay" class="overlay finale-overlay" role="dialog" aria-modal="true" aria-labelledby="finale-title" hidden><div class="finale-card"><div id="finale-stars" class="finale-stars" aria-hidden="true">✧ &nbsp; ✦ &nbsp; ✧</div><p class="eyebrow">DA TUTTI I MONDI POSSIBILI</p><h2 id="finale-title">Sceglierei sempre<br /><em id="finale-name">Giuly.</em></h2><p id="finale-message">Sei il mio posto preferito, anche quando il mondo impazzisce.</p><span class="finale-divider" aria-hidden="true">♡</span><p class="finale-note">E adesso, restiamo qui ancora un po’.</p><p id="finale-star-note" class="finale-star-note"></p><button id="finale-dismiss-button" class="button button-primary" type="button">Resta un po’ qui <svg class="inline-arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><button id="play-again-button" class="text-button" type="button">Riviviamo tutto, dall’inizio</button></div></section>
+
+    <div id="touch-controls" class="touch-controls" hidden><div id="joystick" class="joystick" aria-label="Joystick per muoverti"><span id="joystick-knob" class="joystick-knob"></span></div><div class="touch-actions"><button id="jump-button" class="touch-button" type="button" aria-label="Salta">↑<span>Salta</span></button><button id="touch-interact-button" class="touch-button touch-interact" type="button" aria-label="Interagisci">✦<span>Interagisci</span></button></div></div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
